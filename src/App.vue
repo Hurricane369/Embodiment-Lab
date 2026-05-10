@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
+const base = import.meta.env.BASE_URL
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -10,12 +11,12 @@ const cards = [
   {
     id: 'embodied', title: '具身智能', subtitle: 'Embodied Intelligence',
     text: '智能体依托物理身体，通过传感器获取外界信息，通过执行器与环境发生交互，并在交互过程中完成认知、学习与决策的能力。智能必须嵌入物理世界，在"感知—行动—反馈"的闭环中涌现。',
-    video: '/Video Project.mp4',
+    video: `${base}Video Project.mp4`,
   },
   {
     id: 'humanoid', title: '人形机器人', subtitle: 'Humanoid Robot',
     text: '具有类人外形结构和运动方式的机器人，由双腿、双臂、灵巧手、头部感知系统与躯干控制单元构成，能够模仿人类进行双足行走、抓取操作和自然交互，在适配现有人类环境方面具有不可替代的天然优势。',
-    video: '/7e51cf20dc6145cf99ae0d0b6ea4d2c5.mp4',
+    video: `${base}7e51cf20dc6145cf99ae0d0b6ea4d2c5.mp4`,
   },
 ]
 
@@ -31,33 +32,33 @@ const timeline = [
 const robots = {
   'WABOT-1': {
     name: 'WABOT-1', type: '全尺寸人形机器人',
-    image: '/WABOT-1-1973.jpg',
+    image: `${base}WABOT-1-1973.jpg`,
     description: 'WABOT-1是世界上第一台全尺寸人形机器人，其研发项目于1967年在日本早稻田大学的加藤一郎实验室启动，并于1973年完成。WABOT-1身高约2米，体重160公斤，全身共有26个关节。体内搭载肢体控制系统、视觉系统和对话系统，胸部配备两个摄像头，手部安装有触觉传感器。该机器人具备基础四肢控制能力、视觉感知功能以及简单的语言交互能力，并能抓取和搬运物体。WABOT-1行动缓慢，每走一步需要45秒，步伐仅10公分左右，其智能水平被认为相当于一岁半的婴儿。',
   },
   'ASIMO': {
     name: 'ASIMO', type: '双足仿人机器人',
-    image: '/Honda_ASIMO.jpg',
+    image: `${base}Honda_ASIMO.jpg`,
     description: 'ASIMO是日本本田研制的双足仿人机器人，身高1.3米，体重48公斤，最高行走速度达9km/h，2000年推出首代机型，2011年第三代机型关节自由度增至57个，采用i-WALK智能实时自由步行技术，通过陀螺仪与六轴力传感器实现平衡控制。头部双目视觉传感器支持自主避障与路线规划。2022年3月31日结束演示活动正式退役。',
   },
   'Atlas': {
     name: 'Atlas', type: '先进双足机器人',
     image: '',
-    video: '/atlas.mp4',
+    video: `${base}atlas.mp4`,
     description: 'Atlas是由波士顿动力公司开发的先进双足机器人。最初于2013年作为液压驱动机器人推出，参与DARPA机器人挑战赛，逐渐掌握跳跃、后空翻等高难度动作。2019年通过自主步伐规划算法实现崎岖地形导航。2024年液压版退役后，电动版Atlas通过更轻量化的机械骨架和紧凑关节设计转向工业应用。',
   },
   'Tesla Optimus': {
     name: 'Tesla Optimus', type: '通用型人形机器人',
-    image: '/telsa.png',
+    image: `${base}telsa.png`,
     description: '特斯拉Optimus是一款旨在代替人类执行重复及危险任务的通用型人形机器人。自2021年发布以来，它凭借特斯拉自动驾驶（FSD）同源的AI系统与行星滚柱丝杠等自研硬核执行器实现了快速迭代，并在第二代产品中展现了包括精细抓取、瑜伽平衡等复杂运动能力。当前，特斯拉正加速推进搭载全新AI5芯片的量产版本，以期实现断网环境下的本地智能闭环。',
   },
   '荣耀 闪电': {
     name: '荣耀 闪电', type: '竞速人形机器人',
-    image: '/闪电.jpg',
+    image: `${base}闪电.jpg`,
     description: '荣耀机器人"闪电"是一款专为竞速而生的自研人形机器人。它以50分26秒的净用时夺得2026北京亦庄人形机器人半程马拉松冠军，并打破了人类半马世界纪录。"闪电"身高169厘米，采用红色机甲风设计，其核心竞争力在于速度与爆发力。它搭载了荣耀自研的一体化关节模组，峰值扭矩高达400牛·米，并配备了源自手机领域的液冷散热系统，确保了高强度奔跑下的稳定输出。',
   },
   '宇树 G1': {
     name: '宇树 G1', type: '通用人形机器人',
-    image: '/宇树_G1.png',
+    image: `${base}宇树_G1.png`,
     description: '宇树科技 G1 是一款兼具超强动态运动能力与极高性价比的通用人形机器人。自2024年发布以来，这款身高132厘米、起售价仅9.9万元的机器人，凭借其搭载的 UnifoLM 统一大模型与深度强化学习技术，在运动控制上实现了质的飞跃。G1 拥有最多43个关节自由度并配备 3D 激光雷达感知系统，完成了全球首次人形机器人侧空翻、踩墙后空翻等极高难度的动态平衡动作。从斩获世界人形机器人运动会冠军到跨界亮相春晚，宇树 G1 凭借极其强悍的软硬件结合能力极大加速了国内人形机器人在商业化与多场景融合上的落地进程。',
   },
 }
@@ -68,7 +69,7 @@ const hotspots = [
     id: 'head',
     title: '环境感知与场景理解',
     label: '传感系统',
-    images: ['/图片2.png', '/图片1.png'],
+    images: [`${base}图片2.png`, `${base}图片1.png`],
     desc: '视觉系统通过集成工业级 RGB-D 深度相机构建异构视觉矩阵，利用红外立体视觉实时生成高精度三维点云数据，在毫秒级延迟下执行语义 VSLAM、动态避障与微小物体识别。力觉传感通过在末端执行器、核心关节及足底嵌装六维力/力矩传感器，以微秒级高频采样率同步解算三轴受力与扭矩，结合柔顺控制与阻抗控制算法实现无损抓取与动态平衡。',
     tags: ['RGB-D 深度感知', '高精度三维点云', '六维力/力矩', '动态阻抗控制'],
     pos: { top: '8%', left: '48%' },
@@ -78,7 +79,7 @@ const hotspots = [
     id: 'torso',
     title: '系统的"大脑"',
     label: '高性能控制器',
-    images: ['/图片6.jpg'],
+    images: [`${base}图片6.jpg`],
     desc: '主控平台采用 CPU+GPU 异构融合算力架构：CPU 负责纳秒级全局任务调度与全身动力学 WBC 控制；GPU 作为算力引擎支撑端到端多模态大模型 VLA 的极速推理。最新架构深度集成专用 AI 神经网络加速芯片 NPU/ASIC，能在几毫秒内打通从多维感知数据清洗、认知大模型自主决策到 40+ 关节指令同步下发的超级闭环。',
     tags: ['CPU+GPU异构算力', 'VLA大模型推理', '全身动力学WBC'],
     pos: { top: '32%', left: '48%' },
@@ -88,7 +89,7 @@ const hotspots = [
     id: 'hands',
     title: '末端执行器',
     label: '末端执行器',
-    images: ['/机器手.png'],
+    images: [`${base}机器手.png`],
     desc: '灵巧手采用高自由度仿生设计，傅利叶 GR-2 与星动纪元"小星 Max"均具备 12 个主动自由度，可完成夹取、捏、握持、拧转等精确动作。通过软体材料与触觉反馈实现抓取力自适应调节，搭载多模态触觉传感器与电子皮肤，结合深度学习与强化学习算法，实现"手-眼-力"协同与双臂柔顺力控操作。',
     tags: ['12主动自由度', '柔性驱动', '多模态触觉', '视触觉电子皮肤'],
     pos: { top: '47%', left: '28%' },
@@ -98,7 +99,7 @@ const hotspots = [
     id: 'frame',
     title: '核心驱动与精密传动',
     label: '电机与谐波减速器',
-    images: ['/图片5.jpg', '/图片4.jpg'],
+    images: [`${base}图片5.jpg`, `${base}图片4.jpg`],
     desc: ['无框力矩电机通过海尔贝克阵列磁路与超高槽满率绕组技术大幅提升扭矩密度，Tesla Optimus 躯干旋转执行器在不到 2kg 自重下爆发 110 N·m 峰值扭矩。', '谐波减速器利用柔轮弹性变形实现 1:50 至 1:160 超大单级传动比与近乎零背隙的机械咬合，国内绿的谐波凭借 P 型三次谐波齿形将柔轮疲劳寿命突破 10,000 小时。'],
     tags: ['高扭矩密度电机', '微流道液冷', '零背隙谐波减速', '柔轮疲劳寿命'],
     pos: { top: '67%', left: '53%' },
@@ -114,7 +115,7 @@ const scenarios = [
     features: ['任务明确', '效率要求高', '柔性制造'],
     cases: ['物料搬运', '质检协作', '精密组装'],
     gradient: 'from-blue-700 to-cyan-600', dotColor: '#3b82f6',
-    video: '/工业领域.mp4',
+    video: `${base}工业领域.mp4`,
   },
   {
     title: '家庭服务', subtitle: 'Home Service',
@@ -122,7 +123,7 @@ const scenarios = [
     features: ['非结构化程度高', '任务碎片化'],
     cases: ['清洁整理', '陪伴', '烹饪'],
     gradient: 'from-emerald-700 to-teal-500', dotColor: '#10b981',
-    img: '/家庭服务.png',
+    img: `${base}家庭服务.png`,
   },
   {
     title: '医疗领域', subtitle: 'Medical',
@@ -130,7 +131,7 @@ const scenarios = [
     features: ['安全性要求极高', '操作精细', '多模态融合'],
     cases: ['康复训练', '病房巡检', '导诊咨询'],
     gradient: 'from-rose-700 to-pink-600', dotColor: '#f43f5e',
-    img: '/医疗领域.jpg',
+    img: `${base}医疗领域.jpg`,
   },
   {
     title: '商业服务', subtitle: 'Commercial',
@@ -138,7 +139,7 @@ const scenarios = [
     features: ['重视交互体验', '形象表达', '全品类覆盖'],
     cases: ['迎宾导购', '客户接待', '配送清洁'],
     gradient: 'from-purple-700 to-violet-500', dotColor: '#a855f7',
-    video: '/商业服务.mp4',
+    video: `${base}商业服务.mp4`,
   },
   {
     title: '特种应急', subtitle: 'Special & Emergency',
@@ -146,7 +147,7 @@ const scenarios = [
     features: ['环境恶劣', '容错率极低'],
     cases: ['灾害救援', '消防排险'],
     gradient: 'from-orange-700 to-amber-500', dotColor: '#f97316',
-    img: '/特种应急.jpg',
+    img: `${base}特种应急.jpg`,
   },
   {
     title: '智能驾驶', subtitle: 'Intelligent Driving',
@@ -154,7 +155,7 @@ const scenarios = [
     features: ['高速动态感知', '实时决策'],
     cases: ['L4 级自动驾驶', '自主导航'],
     gradient: 'from-indigo-700 to-sky-500', dotColor: '#6366f1',
-    video: '/智能驾驶.mp4',
+    video: `${base}智能驾驶.mp4`,
   },
 ]
 
@@ -773,7 +774,7 @@ onBeforeUnmount(() => {
         <div class="relative w-full h-full flex items-center justify-center">
           <!-- 机器人透视图 · 全息悬浮 -->
           <div class="animate-float pointer-events-none">
-            <img class="scan-image h-[80vh] w-auto object-contain drop-shadow-[0_0_25px_rgba(59,130,246,0.5)] brightness-110" src="/背景图.png" alt="人形机器人透视图" />
+            <img class="scan-image h-[80vh] w-auto object-contain drop-shadow-[0_0_25px_rgba(59,130,246,0.5)] brightness-110" :src="`${base}背景图.png`" alt="人形机器人透视图" />
           </div>
 
           <!-- 热点层 -->
