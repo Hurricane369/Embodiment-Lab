@@ -3,6 +3,6 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/Embodiment-Lab/',
+  base: './',
   plugins: [vue(), tailwindcss()],
 })
